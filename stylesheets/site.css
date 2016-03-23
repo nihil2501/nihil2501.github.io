@@ -313,7 +313,7 @@ table {
   border-spacing: 0; }
 
 body {
-  background: #ECC561;
+  background: black;
   text-align: center;
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1em; }
@@ -323,7 +323,7 @@ body {
   margin-top: 6em; }
 
 h1 {
-  color: rgba(0, 0, 0, 0.5);
+  color: white;
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.8em;
   font-weight: 400;
