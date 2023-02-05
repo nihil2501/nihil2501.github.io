@@ -100,7 +100,7 @@ view sharedData page model toMsg pageView =
     { body =
         Element.layout []
             (Element.column []
-                [ Header.view page.path
+                [ Header.view page.route
                 , Element.column [] pageView.body
                 ]
             )
