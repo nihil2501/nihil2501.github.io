@@ -3,7 +3,8 @@
   "scripts": {
     "postinstall": "elm-tooling install",
     "start": "elm-pages dev",
-    "build": "elm-pages build && mv dist docs"
+    "build": "elm-pages build && mv dist docs",
+    "add": "elm-pages add"
   },
   "devDependencies": {
     "elm-optimize-level-2": "0.2.3",
