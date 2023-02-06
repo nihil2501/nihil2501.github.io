@@ -111,7 +111,7 @@ view sharedData page model toMsg pageView =
                 ]
                 [ Header.view
                     [ Element.alignTop
-                    , Element.width (Element.px 120)
+                    , Element.width (Element.px 160)
                     ]
                     page.route
                 , Element.column

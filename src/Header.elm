@@ -20,7 +20,8 @@ view attrs currentMaybeRoute =
     -- complaint about cyclic dependency.
     Element.column
         (attrs
-            ++ [ Element.Font.family
+            ++ [ Element.Font.size 30
+               , Element.Font.family
                     [ Element.Font.external
                         { name = "Nabla"
                         , url = "https://fonts.googleapis.com/css?family=Nabla"
@@ -42,52 +43,23 @@ link currentRoute route name =
         linkName =
             case ( currentRoute, route ) of
                 ( Route.Blog__Slug_ {}, Route.Blog ) ->
-                    name ++ " *"
+                    "| " ++ name
 
                 _ ->
                     if currentRoute == route then
-                        name ++ " *"
+                        "| " ++ name
 
                     else
-                        name
+                        "  " ++ name
 
         label : Element msg
         label =
             Element.el [] (Element.text linkName)
     in
     Element.el
-        [ Element.height (Element.px 40) ]
+        [ Element.height (Element.px 60) ]
         (Element.link []
             { url = Path.toAbsolute (Route.toPath route)
             , label = label
             }
         )
-
-
-
--- link : Route -> Route -> String -> Element msg
--- link currentRoute route name =
---     let
---         attrs : List (Attribute msg)
---         attrs =
---             case ( currentRoute, route ) of
---                 ( Route.Blog__Slug_ {}, Route.Blog ) ->
---                     [ Element.Font.underline ]
---                 _ ->
---                     if currentRoute == route then
---                         [ Element.Font.underline ]
---                     else
---                         []
---         label : Element msg
---         label =
---             Element.el attrs (Element.text name)
---     in
---     Element.el
---         [ Element.width (Element.px 120)
---         , Element.height (Element.px 40)
---         ]
---         (Element.link []
---             { url = Path.toAbsolute (Route.toPath route)
---             , label = label
---             }
---         )
