@@ -3,6 +3,8 @@ module Shared exposing (Data, Model, Msg(..), SharedMsg(..), template)
 import Browser.Navigation
 import DataSource
 import Element
+import Element.Background
+import Element.Font
 import Header exposing (view)
 import Html exposing (Html)
 import Pages.Flags
@@ -98,10 +100,27 @@ view :
     -> { body : Html msg, title : String }
 view sharedData page model toMsg pageView =
     { body =
-        Element.layout []
-            (Element.column []
+        Element.layout
+            [ Element.Background.color (Element.rgb 0.1 0.1 0.1)
+            , Element.Font.color (Element.rgb 0.9 0.9 0.9)
+            , Element.paddingXY 20 0
+            ]
+            (Element.column
+                [ Element.centerX
+                , Element.width (Element.fill |> Element.maximum 800)
+                ]
                 [ Header.view page.route
-                , Element.column [] pageView.body
+                , Element.column
+                    [ Element.paddingXY 0 20
+                    , Element.Font.size 20
+                    , Element.Font.family
+                        [ Element.Font.external
+                            { name = "Ubuntu"
+                            , url = "https://fonts.googleapis.com/css?family=Ubuntu"
+                            }
+                        ]
+                    ]
+                    pageView.body
                 ]
             )
     , title = pageView.title

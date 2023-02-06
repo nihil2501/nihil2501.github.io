@@ -3,7 +3,7 @@
   "scripts": {
     "postinstall": "elm-tooling install",
     "start": "elm-pages dev",
-    "build": "elm-pages build && mv dist docs",
+    "build": "elm-pages build && rm -rf docs && mv dist docs",
     "add": "elm-pages add"
   },
   "devDependencies": {

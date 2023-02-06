@@ -18,16 +18,27 @@ view currentMaybeRoute =
     -- Also, when importing an internal module `TemplateModulesBeta` that has a
     -- value that might have worked called `getStaticRoutes`, I think I saw a
     -- complaint about cyclic dependency.
-    Element.row []
-        [ headerLink currentRoute Route.Index "Home"
-        , headerLink currentRoute Route.Projects "Projects"
-        , headerLink currentRoute Route.Blog "Blog"
-        , headerLink currentRoute Route.Resume "Resume"
+    Element.row
+        [ Element.height (Element.px 100)
+        , Element.width Element.fill
+        , Element.spaceEvenly
+        , Element.paddingXY 60 0
+        , Element.Font.family
+            [ Element.Font.external
+                { name = "Nabla"
+                , url = "https://fonts.googleapis.com/css?family=Nabla"
+                }
+            ]
+        ]
+        [ link currentRoute Route.Index "Home"
+        , link currentRoute Route.Projects "Projects"
+        , link currentRoute Route.Blog "Blog"
+        , link currentRoute Route.Resume "Resume"
         ]
 
 
-headerLink : Route -> Route -> String -> Element msg
-headerLink currentRoute route name =
+link : Route -> Route -> String -> Element msg
+link currentRoute route name =
     let
         attrs : List (Attribute msg)
         attrs =
@@ -46,4 +57,7 @@ headerLink currentRoute route name =
         label =
             Element.el attrs (Element.text name)
     in
-    Element.link [] { url = Path.toAbsolute (Route.toPath route), label = label }
+    Element.link []
+        { url = Path.toAbsolute (Route.toPath route)
+        , label = label
+        }
