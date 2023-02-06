@@ -1,6 +1,8 @@
 module Page.Index exposing (Data, Model, Msg, page)
 
 import DataSource exposing (DataSource)
+import Element exposing (Element)
+import Element.Font
 import Head
 import Head.Seo as Seo
 import Page exposing (Page, StaticPayload)
@@ -66,4 +68,22 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    View.placeholder "Home content"
+    let
+        body : Element msg
+        body =
+            Element.el
+                [ Element.Font.size 200
+                , Element.Font.family
+                    [ Element.Font.external
+                        { name = "Nabla"
+                        , url = "https://fonts.googleapis.com/css?family=Nabla"
+                        }
+                    ]
+                ]
+                (Element.text
+                    "Home"
+                )
+    in
+    { body = [ body ]
+    , title = "Home"
+    }

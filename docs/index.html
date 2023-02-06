@@ -13,7 +13,7 @@
 import userInit from"/index.js";
 let prefetchedPages=[window.location.pathname],initialLocationHash=document.location.hash.replace(/^#/,"");function loadContentAndInitializeApp(){let a=window.location.pathname.replace(/(w)$/,"$1/");a.endsWith("/")||(a+="/");const b=Elm.TemplateModulesBeta.init({flags:{secrets:null,baseUrl:document.baseURI,isPrerendering:!1,isDevServer:!1,isElmDebugMode:!1,contentJson:JSON.parse(document.getElementById("__ELM_PAGES_DATA__").innerHTML),userFlags:userInit.flags()}});return b.ports.toJsPort.subscribe(()=>{loadNamedAnchor()}),b}function loadNamedAnchor(){if(""!==initialLocationHash){const a=document.querySelector(`[name=${initialLocationHash}]`);a&&a.scrollIntoView()}}function prefetchIfNeeded(a){if(a.host===window.location.host&&!prefetchedPages.includes(a.pathname)){prefetchedPages.push(a.pathname),console.log("Preloading...",a.pathname);const b=document.createElement("link");b.setAttribute("as","fetch"),b.setAttribute("rel","prefetch"),b.setAttribute("href",origin+a.pathname+"/content.json"),document.head.appendChild(b)}}const appPromise=new Promise(function(a){document.addEventListener("DOMContentLoaded",()=>{a(loadContentAndInitializeApp())})});userInit.load(appPromise),"function"==typeof connect&&connect(function(a){appPromise.then(b=>{b.ports.fromJsPort.send({contentJson:a})})});const trigger_prefetch=b=>{const c=find_anchor(b.target);c&&c.href&&c.hasAttribute("elm-pages:prefetch")&&prefetchIfNeeded(c)};let mousemove_timeout;const handle_mousemove=a=>{clearTimeout(mousemove_timeout),mousemove_timeout=setTimeout(()=>{trigger_prefetch(a)},20)};addEventListener("touchstart",trigger_prefetch),addEventListener("mousemove",handle_mousemove);function find_anchor(a){for(;a&&"A"!==a.nodeName.toUpperCase();)a=a.parentNode;return a}
     </script>
-    <title>Placeholder - Home content</title>
+    <title>Home</title>
     <meta name="generator" content="elm-pages v2.1.10">
     <link rel="manifest" href="/manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
@@ -25,7 +25,7 @@ let prefetchedPages=[window.location.pathname],initialLocationHash=document.loca
     </head>
     <body>
       <div data-url="" display="none"></div>
-      <div class="font-size-20 font-open-sanshelveticaverdanasans-serif bg-26-26-26-255 fc-230-230-230-255 p-20-0 s e ui s e"><div><style>@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {.s.r > .s { flex-basis: auto !important; } .s.r > .s.ctr { flex-basis: auto !important; }}
+      <div class="font-size-20 font-open-sanshelveticaverdanasans-serif bg-38-38-38-255 fc-204-204-204-255 p-40 s e ui s e"><div><style>@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {.s.r > .s { flex-basis: auto !important; } .s.r > .s.ctr { flex-basis: auto !important; }}
 input[type="search"],
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
@@ -109,24 +109,28 @@ html,body{height:100%;padding:0;margin:0;}.s.e.ic{display:block;}.s.e.ic.hf > im
 @import url('https://fonts.googleapis.com/css?family=Nabla');
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');.font-open-sanshelveticaverdanasans-serif.cap, .font-open-sanshelveticaverdanasans-serif .cap {line-height: 1;} .font-open-sanshelveticaverdanasans-serif.cap> .t, .font-open-sanshelveticaverdanasans-serif .cap > .t {vertical-align: 0;line-height: 1;}.ff-nabla .font-open-sanshelveticaverdanasans-serif.cap, .ff-nabla .font-open-sanshelveticaverdanasans-serif .cap {line-height: 1;} .ff-nabla .font-open-sanshelveticaverdanasans-serif.cap> .t, .ff-nabla .font-open-sanshelveticaverdanasans-serif .cap > .t {vertical-align: 0;line-height: 1;}.ff-ubuntu .font-open-sanshelveticaverdanasans-serif.cap, .ff-ubuntu .font-open-sanshelveticaverdanasans-serif .cap {line-height: 1;} .ff-ubuntu .font-open-sanshelveticaverdanasans-serif.cap> .t, .ff-ubuntu .font-open-sanshelveticaverdanasans-serif .cap > .t {vertical-align: 0;line-height: 1;}
 .font-open-sanshelveticaverdanasans-serif .ff-nabla.cap, .font-open-sanshelveticaverdanasans-serif .ff-nabla .cap {line-height: 1;} .font-open-sanshelveticaverdanasans-serif .ff-nabla.cap> .t, .font-open-sanshelveticaverdanasans-serif .ff-nabla .cap > .t {vertical-align: 0;line-height: 1;}.ff-nabla.cap, .ff-nabla .cap {line-height: 1;} .ff-nabla.cap> .t, .ff-nabla .cap > .t {vertical-align: 0;line-height: 1;}.ff-ubuntu .ff-nabla.cap, .ff-ubuntu .ff-nabla .cap {line-height: 1;} .ff-ubuntu .ff-nabla.cap> .t, .ff-ubuntu .ff-nabla .cap > .t {vertical-align: 0;line-height: 1;}
-.font-open-sanshelveticaverdanasans-serif .ff-ubuntu.cap, .font-open-sanshelveticaverdanasans-serif .ff-ubuntu .cap {line-height: 1;} .font-open-sanshelveticaverdanasans-serif .ff-ubuntu.cap> .t, .font-open-sanshelveticaverdanasans-serif .ff-ubuntu .cap > .t {vertical-align: 0;line-height: 1;}.ff-nabla .ff-ubuntu.cap, .ff-nabla .ff-ubuntu .cap {line-height: 1;} .ff-nabla .ff-ubuntu.cap> .t, .ff-nabla .ff-ubuntu .cap > .t {vertical-align: 0;line-height: 1;}.ff-ubuntu.cap, .ff-ubuntu .cap {line-height: 1;} .ff-ubuntu.cap> .t, .ff-ubuntu .cap > .t {vertical-align: 0;line-height: 1;}.ff-ubuntu{
+.font-open-sanshelveticaverdanasans-serif .ff-ubuntu.cap, .font-open-sanshelveticaverdanasans-serif .ff-ubuntu .cap {line-height: 1;} .font-open-sanshelveticaverdanasans-serif .ff-ubuntu.cap> .t, .font-open-sanshelveticaverdanasans-serif .ff-ubuntu .cap > .t {vertical-align: 0;line-height: 1;}.ff-nabla .ff-ubuntu.cap, .ff-nabla .ff-ubuntu .cap {line-height: 1;} .ff-nabla .ff-ubuntu.cap> .t, .ff-nabla .ff-ubuntu .cap > .t {vertical-align: 0;line-height: 1;}.ff-ubuntu.cap, .ff-ubuntu .cap {line-height: 1;} .ff-ubuntu.cap> .t, .ff-ubuntu .cap > .t {vertical-align: 0;line-height: 1;}.font-size-200{
+  font-size: 200px;
+}.ff-ubuntu{
   font-family: "Ubuntu";
   font-feature-settings: ;
   font-variant: normal;
+}.height-px-40px{
+  height : 40px;
 }.ff-nabla{
   font-family: "Nabla";
   font-feature-settings: ;
   font-variant: normal;
-}.height-px-100px{
-  height : 100px;
+}.width-px-120{
+  width: 120px;
 }.max-width-800{
   max-width: 800px;
-}.p-20-0{
-  padding: 0px 20px 0px 20px;
-}.fc-230-230-230-255{
-  color: rgba(230,230,230,1);
-}.bg-26-26-26-255{
-  background-color: rgba(26,26,26,1);
+}.p-40{
+  padding: 40px 40px 40px 40px;
+}.fc-204-204-204-255{
+  color: rgba(204,204,204,1);
+}.bg-38-38-38-255{
+  background-color: rgba(38,38,38,1);
 }.font-open-sanshelveticaverdanasans-serif{
   font-family: "Open Sans", "Helvetica", "Verdana", sans-serif;
   font-feature-settings: ;
@@ -137,7 +141,7 @@ html,body{height:100%;padding:0;margin:0;}.s.e.ic{display:block;}.s.e.ic.hf > im
 }.s:focus .focusable, .s.focusable:focus, .ui-slide-bar:focus + .s .focusable-thumb{
   box-shadow: 0px 0px 0px 3px rgba(155,203,255,1);
   outline: none;
-}</style></div><div class="hc ah cx s c max-width-800 wf ct cl"><div class="he height-px-100px sev ff-nabla s r wf cl ccy"><a class="hc s e wc ccx ccy lnk" href="/" rel="noopener noreferrer"><div class="hc s e wc u"><div class="s t wf hf">Home</div></div></a><a class="hc s e wc ccx ccy lnk" href="/projects" rel="noopener noreferrer"><div class="hc s e wc"><div class="s t wf hf">Projects</div></div></a><a class="hc s e wc ccx ccy lnk" href="/blog" rel="noopener noreferrer"><div class="hc s e wc"><div class="s t wf hf">Blog</div></div></a><a class="hc s e wc ccx ccy lnk" href="/resume" rel="noopener noreferrer"><div class="hc s e wc"><div class="s t wf hf">Resume</div></div></a></div><div class="hc font-size-20 ff-ubuntu s c wc ct cl"><div class="s t wc hc">Home content</div></div></div></div>
+}</style></div><div class="hc ah cx s r max-width-800 wf cl ccy"><div class="hc av at we width-px-120 ff-nabla s c ct cl"><div class="he height-px-40px s e wc"><a class="hc s e wc ccx ccy lnk" href="/" rel="noopener noreferrer"><div class="hc s e wc"><div class="s t wf hf">Home *</div></div></a></div><div class="he height-px-40px s e wc"><a class="hc s e wc ccx ccy lnk" href="/projects" rel="noopener noreferrer"><div class="hc s e wc"><div class="s t wf hf">Projects</div></div></a></div><div class="he height-px-40px s e wc"><a class="hc s e wc ccx ccy lnk" href="/blog" rel="noopener noreferrer"><div class="hc s e wc"><div class="s t wf hf">Blog</div></div></a></div><div class="he height-px-40px s e wc"><a class="hc s e wc ccx ccy lnk" href="/resume" rel="noopener noreferrer"><div class="hc s e wc"><div class="s t wf hf">Resume</div></div></a></div></div><div class="hc av at font-size-20 ff-ubuntu s c wf ct cl"><div class="hc font-size-200 ff-nabla s e wc"><div class="s t wf hf">Home</div></div></div></div></div>
     </body>
   </html>
   

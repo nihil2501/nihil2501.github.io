@@ -101,17 +101,22 @@ view :
 view sharedData page model toMsg pageView =
     { body =
         Element.layout
-            [ Element.Background.color (Element.rgb 0.1 0.1 0.1)
-            , Element.Font.color (Element.rgb 0.9 0.9 0.9)
-            , Element.paddingXY 20 0
+            [ Element.Background.color (Element.rgb 0.15 0.15 0.15)
+            , Element.Font.color (Element.rgb 0.8 0.8 0.8)
+            , Element.paddingXY 40 40
             ]
-            (Element.column
+            (Element.row
                 [ Element.centerX
                 , Element.width (Element.fill |> Element.maximum 800)
                 ]
-                [ Header.view page.route
+                [ Header.view
+                    [ Element.alignTop
+                    , Element.width (Element.px 120)
+                    ]
+                    page.route
                 , Element.column
-                    [ Element.paddingXY 0 20
+                    [ Element.width Element.fill
+                    , Element.alignTop
                     , Element.Font.size 20
                     , Element.Font.family
                         [ Element.Font.external

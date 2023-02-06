@@ -2,7 +2,7 @@ module Page.Blog exposing (Data, Model, Msg, page)
 
 import Data.BlogPost as BlogPost exposing (BlogPost)
 import DataSource exposing (DataSource)
-import Element
+import Element exposing (Element)
 import Head
 import Head.Seo as Seo
 import Page exposing (Page, PageWithState, StaticPayload)
@@ -71,6 +71,7 @@ view :
     -> View Msg
 view maybeUrl sharedModel static =
     let
+        body : List (Element msg)
         body =
             List.map
                 (\post ->
