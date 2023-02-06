@@ -31,11 +31,16 @@ headerLink currentRoute route name =
     let
         attrs : List (Attribute msg)
         attrs =
-            if currentRoute == route then
-                [ Element.Font.underline ]
+            case ( currentRoute, route ) of
+                ( Route.Blog__Slug_ {}, Route.Blog ) ->
+                    [ Element.Font.underline ]
 
-            else
-                []
+                _ ->
+                    if currentRoute == route then
+                        [ Element.Font.underline ]
+
+                    else
+                        []
 
         label : Element msg
         label =

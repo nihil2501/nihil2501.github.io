@@ -1,4 +1,4 @@
-module Page.Resume exposing (Model, Msg, Data, page)
+module Page.Resume exposing (Data, Model, Msg, page)
 
 import DataSource exposing (DataSource)
 import Head
@@ -17,8 +17,10 @@ type alias Model =
 type alias Msg =
     Never
 
+
 type alias RouteParams =
     {}
+
 
 page : Page RouteParams Data
 page =
@@ -64,4 +66,4 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    View.placeholder "Resume"
+    View.placeholder "Resume content"

@@ -1,11 +1,15 @@
 module Page.Blog exposing (Data, Model, Msg, page)
 
+import Data.BlogPost as BlogPost exposing (BlogPost)
 import DataSource exposing (DataSource)
+import Element
 import Head
 import Head.Seo as Seo
 import Page exposing (Page, PageWithState, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
+import Path
+import Route exposing (Route)
 import Shared
 import View exposing (View)
 
@@ -32,12 +36,12 @@ page =
 
 
 type alias Data =
-    ()
+    List BlogPost
 
 
 data : DataSource Data
 data =
-    DataSource.succeed ()
+    DataSource.succeed BlogPost.all
 
 
 head :
@@ -66,4 +70,15 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    View.placeholder "Blog"
+    let
+        body =
+            List.map
+                (\post ->
+                    Element.link []
+                        { label = Element.text post.title
+                        , url = Path.toAbsolute (Route.toPath (Route.Blog__Slug_ { slug = post.slug }))
+                        }
+                )
+                static.data
+    in
+    { body = body, title = "Blog" }

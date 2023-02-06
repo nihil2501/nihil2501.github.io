@@ -1,5 +1,6 @@
-module Page.Projects exposing (Data, Model, Msg, page)
+module Page.Blog.Slug_ exposing (Data, Model, Msg, page)
 
+import Data.BlogPost as BlogPost exposing (BlogPost)
 import DataSource exposing (DataSource)
 import Head
 import Head.Seo as Seo
@@ -19,25 +20,28 @@ type alias Msg =
 
 
 type alias RouteParams =
-    {}
+    { slug : String }
 
 
 page : Page RouteParams Data
 page =
-    Page.single
+    Page.prerender
         { head = head
+        , routes = routes
         , data = data
         }
         |> Page.buildNoState { view = view }
 
 
-type alias Data =
-    ()
+routes : DataSource (List RouteParams)
+routes =
+    DataSource.succeed (List.map (\post -> { slug = post.slug }) BlogPost.all)
 
 
-data : DataSource Data
-data =
-    DataSource.succeed ()
+data : RouteParams -> DataSource Data
+data routeParams =
+    DataSource.succeed
+        (List.head (List.filter (\post -> post.slug == routeParams.slug) BlogPost.all))
 
 
 head :
@@ -60,10 +64,14 @@ head static =
         |> Seo.website
 
 
+type alias Data =
+    Maybe BlogPost
+
+
 view :
     Maybe PageUrl
     -> Shared.Model
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    View.placeholder "Projects content"
+    View.placeholder (Maybe.withDefault "oops" (Maybe.map (\post -> post.title ++ " content") static.data))
