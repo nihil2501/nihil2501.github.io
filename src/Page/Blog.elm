@@ -41,7 +41,7 @@ type alias Data =
 
 data : DataSource Data
 data =
-    DataSource.succeed BlogPost.all
+    BlogPost.all
 
 
 head :

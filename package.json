@@ -7,9 +7,13 @@
     "add": "elm-pages add"
   },
   "devDependencies": {
+    "@notionhq/client": "^2.2.3",
+    "dotenv": "^16.0.3",
     "elm-optimize-level-2": "0.2.3",
     "elm-pages": "2.1.10",
     "elm-review": "^2.5.5",
-    "elm-tooling": "^1.4.0"
+    "elm-tooling": "^1.4.0",
+    "notion-exporter": "^0.3.0",
+    "slug": "^8.2.2"
   }
 }

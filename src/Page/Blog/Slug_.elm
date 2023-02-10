@@ -2,6 +2,7 @@ module Page.Blog.Slug_ exposing (Data, Model, Msg, page)
 
 import Data.BlogPost as BlogPost exposing (BlogPost)
 import DataSource exposing (DataSource)
+import Element
 import Head
 import Head.Seo as Seo
 import Page exposing (Page, PageWithState, StaticPayload)
@@ -35,13 +36,14 @@ page =
 
 routes : DataSource (List RouteParams)
 routes =
-    DataSource.succeed (List.map (\post -> { slug = post.slug }) BlogPost.all)
+    BlogPost.all
+        |> DataSource.map (List.map (\post -> { slug = post.slug }))
 
 
 data : RouteParams -> DataSource Data
 data routeParams =
-    DataSource.succeed
-        (List.head (List.filter (\post -> post.slug == routeParams.slug) BlogPost.all))
+    BlogPost.all
+        |> DataSource.map (List.filter (\post -> post.slug == routeParams.slug) >> List.head)
 
 
 head :
@@ -74,4 +76,16 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    View.placeholder (Maybe.withDefault "oops" (Maybe.map (\post -> post.title ++ " content") static.data))
+    let
+        post : BlogPost
+        post =
+            Maybe.withDefault
+                { title = "Whoops!"
+                , body = "Whoops! Something went wrong."
+                , slug = "woops"
+                }
+                static.data
+    in
+    { title = post.title
+    , body = [ Element.paragraph [] [ Element.text post.body ] ]
+    }
