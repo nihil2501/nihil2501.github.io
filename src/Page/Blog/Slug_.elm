@@ -5,6 +5,7 @@ import DataSource exposing (DataSource)
 import Element
 import Head
 import Head.Seo as Seo
+import Markdown
 import Page exposing (Page, PageWithState, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
@@ -87,5 +88,5 @@ view maybeUrl sharedModel static =
                 static.data
     in
     { title = post.title
-    , body = [ Element.paragraph [] [ Element.text post.body ] ]
+    , body = [ Element.paragraph [] [ Markdown.toUi post.body ] ]
     }
