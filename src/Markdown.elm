@@ -64,10 +64,10 @@ renderer =
         \image ->
             case image.title of
                 Just _ ->
-                    Element.image [ Element.width Element.fill ] { src = "/images/" ++ image.src, description = image.alt }
+                    Element.image [ Element.width Element.fill ] { src = "/dynamic/images/" ++ image.src, description = image.alt }
 
                 Nothing ->
-                    Element.image [ Element.width Element.fill ] { src = "/images/" ++ image.src, description = image.alt }
+                    Element.image [ Element.width Element.fill ] { src = "/dynamic/images/" ++ image.src, description = image.alt }
     , blockQuote =
         \children ->
             Element.paragraph

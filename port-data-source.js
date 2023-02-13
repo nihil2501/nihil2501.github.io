@@ -8,7 +8,7 @@ const notionClient = new NotionClient({
   auth: process.env.NOTION_CLIENT_TOKEN
 });
 
-const NotionExporter = require("notion-exporter").default;
+const NotionExporter = require("notion-exporter-with-images").default;
 const notionExporter = new NotionExporter(
   process.env.NOTION_EXPORTER_TOKEN
 );
@@ -22,7 +22,7 @@ module.exports = {
     const blogPosts = await Promise.all(
       response.results.map(async (page) => {
         const title = page.properties.Name.title.map(v => v.plain_text).join("");
-        const body = await notionExporter.getMdString(page.id);
+        const body = await notionExporter.getMdString(page.id, "public/dynamic/images");
         const slug = slugify(title);
 
         return { title, slug, body };

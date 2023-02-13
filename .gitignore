@@ -4,3 +4,4 @@ elm-stuff/
 functions/render/elm-pages-cli.js
 .env
 .DS_Store
+public/dynamic
